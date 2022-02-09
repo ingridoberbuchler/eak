@@ -63,12 +63,12 @@ header {
   @apply p-20 relative z-10 overflow-hidden bg-white text-center flex justify-center;
 
   h1 {
-    @apply text-5xl text-primary-dark sm:leading-snug font-bold text-left;
+    @apply text-5xl text-primary-dark sm:leading-snug  text-left;
   }
   .header-wrapper {
     @apply flex flex-col justify-center items-center container;
     p {
-      @apply text-lg max-w-xl w-full text-center text-xl
+      @apply max-w-xl w-full text-center text-base
     }
   }
 
