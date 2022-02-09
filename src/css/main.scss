@@ -7,7 +7,7 @@ h1, h2, h3 {
 }
 
 h2 {
-  @apply text-2xl sm:text-[40px] pb-5 text-center
+  @apply text-2xl sm:text-[40px] pb-5 text-center border-b border-gray-light
 }
 .desc-title {
   @apply text-base text-gray-medium pb-2
@@ -31,7 +31,7 @@ h2 {
     @apply relative bg-white border border-transparent px-4 pt-4 pb-6 hover:border-primary-light transition rounded-lg;
     box-shadow: 0px 3px 15px 0 rgba(37,55,69,0.1);
     p {
-      @apply text-gray pt-2;
+      @apply text-gray py-2;
     }
     &:after {
       content: '';
