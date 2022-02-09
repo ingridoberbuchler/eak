@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .container {
+    @apply max-w-[1280px] px-4 sm:px-0;
+  }
+}
+
+@font-face {
+  font-family: 'palatino_linotypebold';
+  src: url('../img/fonts/palab-webfont.woff2') format('woff2'),
+  url('../img/fonts/palab-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}

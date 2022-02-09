@@ -1,8 +1,8 @@
 /**
-*   Gulp with TailwindCSS - An CSS Utility framework                                
-*   Author : Manjunath G                                              
+*   Gulp with TailwindCSS - An CSS Utility framework
+*   Author : Manjunath G
 *   URL : manjumjn.com | lazymozek.com
-*   Twitter : twitter.com/manju_mjn                                    
+*   Twitter : twitter.com/manju_mjn
 **/
 
 /*
@@ -24,11 +24,12 @@ const uglify = require('gulp-terser');//To Minify JS files
 const imagemin = require('gulp-imagemin'); //To Optimize Images
 const cleanCSS = require('gulp-clean-css');//To Minify CSS files
 const purgecss = require('gulp-purgecss');// Remove Unused CSS from Styles
+const fileinclude = require('gulp-file-include');
 
 //Note : Webp still not supported in major browsers including forefox
 //const webp = require('gulp-webp'); //For converting images to WebP format
 //const replace = require('gulp-replace'); //For Replacing img formats to webp in html
-const logSymbols = require('log-symbols'); //For Symbolic Console logs :) :P 
+const logSymbols = require('log-symbols'); //For Symbolic Console logs :) :P
 
 //Load Previews on Browser on dev
 function livePreview(done){
@@ -39,7 +40,7 @@ function livePreview(done){
     port: options.config.port || 5000
   });
   done();
-} 
+}
 
 // Triggers Browser reload
 function previewReload(done){
@@ -50,11 +51,19 @@ function previewReload(done){
 
 //Development Tasks
 function devHTML(){
-  return src(`${options.paths.src.base}/**/*.html`).pipe(dest(options.paths.dist.base));
-} 
+  return src([
+    `${options.paths.src.base}/**/*.html`,
+    `!${options.paths.src.partials}/*.html` // ignore
+  ])
+      .pipe(fileinclude({
+        prefix: '@@',
+        basepath: '@file'
+      }))
+      .pipe(dest(options.paths.dist.base));
+}
 
 function devStyles(){
-  const tailwindcss = require('tailwindcss'); 
+  const tailwindcss = require('tailwindcss');
   return src(`${options.paths.src.css}/**/*.scss`).pipe(sass().on('error', sass.logError))
     .pipe(dest(options.paths.src.css))
     .pipe(postcss([
@@ -92,7 +101,15 @@ function devClean(){
 
 //Production Tasks (Optimized Build for Live/Production Sites)
 function prodHTML(){
-  return src(`${options.paths.src.base}/**/*.html`).pipe(dest(options.paths.build.base));
+  return src([
+    `${options.paths.src.base}/**/*.html`,
+    `!${options.paths.src.partials}/*.html` // ignore
+  ])
+      .pipe(fileinclude({
+        prefix: '@@',
+        basepath: '@file'
+      }))
+      .pipe(dest(options.paths.build.base));
 }
 
 function prodStyles(){

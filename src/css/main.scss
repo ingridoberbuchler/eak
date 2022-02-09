@@ -1,38 +1,64 @@
-//All styles can be added here.
-.hero-heading{
-    @apply text-4xl mb-10 text-white font-medium;
+body, html {
+  @apply leading-6 text-[18px];
 }
 
-.instructions{    
-    .sub-title{
-        @apply text-gray-900 pb-2 border-b-2 border-gray-400 mb-5 text-xl font-medium;
-
-        & + p {
-            @apply mb-3
-        }
-    }
-    .code{
-        @apply block font-mono border rounded bg-gray-100 text-gray-700 px-4 py-5 leading-normal text-sm shadow;
-
-        &.pre{
-            @apply whitespace-pre;
-        }
-
-        em{
-            @apply opacity-75;
-        }
-    }
-
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
 }
 
-.social{
-    @apply block pt-6 text-gray-700;
+h2 {
+  @apply text-2xl sm:text-[40px] pb-5 text-center
+}
+.desc-title {
+  @apply text-base text-gray-medium pb-2
+}
+.container {
+  @apply mx-auto px-4
+}
 
-    a{
-        @apply text-blue-500 font-medium p-4;
+.bg-light {
+  background: #F6F7F8;
+}
 
-        &:hover{
-            @apply text-blue-700;
-        }
+// Services
+.services {
+  @apply py-6;
+  h4 {
+    @apply text-center font-semibold text-lg text-primary leading-snug;
+  }
+
+  &__item {
+    @apply relative bg-white border border-transparent px-4 pt-4 pb-6 hover:border-primary-light transition rounded-lg;
+    box-shadow: 0px 3px 15px 0 rgba(37,55,69,0.1);
+    p {
+      @apply text-gray pt-2;
     }
+    &:after {
+      content: '';
+      position: absolute;
+      right: 10px;
+      bottom: 20px;
+      width: 20px;
+      height: 20px;
+      background: url("/img/right.svg") no-repeat center center;
+      background-size: 30px;
+      transition: all 0.25s;
+      opacity: 0;
+    }
+    &:hover:after {
+      right: 15px;
+      opacity: 1;
+    }
+  }
+}
+
+//Section more
+.more-block {
+  p {
+    @apply py-4 sm:max-w-[800px] mx-auto text-center;
+  }
+
+  a {
+    @apply underline hover:no-underline text-primary;
+  }
 }

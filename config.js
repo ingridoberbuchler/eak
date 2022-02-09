@@ -9,19 +9,20 @@ module.exports = {
 			base: "./src",
 			css: "./src/css",
 			js: "./src/js",
-			img: "./src/img"
+			img: "./src/img",
+			partials: "./src/pages/partials"
 		},
 		dist: {
 			base: "./dist",
 			css: "./dist/css",
 			js: "./dist/js",
-			img: "./dist/img"
+			img: "./dist/img",
 		},
 		build: {
 			base: "./build",
 			css: "./build/css",
 			js: "./build/js",
-			img: "./build/img"
+			img: "./build/img",
 		}
 	}
 }
